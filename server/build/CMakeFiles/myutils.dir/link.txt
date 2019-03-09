@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libmyutils.so -o libmyutils.so CMakeFiles/myutils.dir/srcmyutils/pcolor.c.o 

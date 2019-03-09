@@ -1,0 +1,24 @@
+#Some Doxygen common/useful configurations
+#Items between @ @ are configured dynamically by cmake in CMakeLists.txt
+#
+PROJECT_NAME           = "Projeto"
+PROJECT_NUMBER         = 1.0.0
+STRIP_FROM_PATH        = "/home/tiago/PARI/Projeto_77001/server" \
+                         "/home/tiago/PARI/Projeto_77001/server/build"
+INPUT                  = "/home/tiago/PARI/Projeto_77001/server/doc/mainpage.dox"\ 
+			 "/home/tiago/PARI/Projeto_77001/server"
+EXCLUDE                = "/home/tiago/PARI/Projeto_77001/server/build" 
+PROJECT_LOGO           = "/home/tiago/PARI/Projeto_77001/server/doc/PARI_logo.ico"
+FILE_PATTERNS          = *.h  *.c
+#Use next lines instead if you need only to document the library
+#FILE_PATTERNS          = "/home/tiago/PARI/Projeto_77001/server/srcmyutils/*.h" \
+#                         "/home/tiago/PARI/Projeto_77001/server/srcmyutils/*.c"
+RECURSIVE              = YES
+#USE_MDFILE_AS_MAINPAGE = "/home/tiago/PARI/Projeto_77001/server/doc/mainpage.dox"
+
+GENERATE_LATEX         = NO
+HAVE_DOT               = YES
+SOURCE_BROWSER         = YES
+GENERATE_TREEVIEW      = ALL
+HTML_EXTRA_STYLESHEET  = "/home/tiago/PARI/Projeto_77001/server/doc/doxygen_1.css" 
+#HTML_EXTRA_STYLESHEET  = "/home/tiago/PARI/Projeto_77001/server/doc/doxygen_3.css" 

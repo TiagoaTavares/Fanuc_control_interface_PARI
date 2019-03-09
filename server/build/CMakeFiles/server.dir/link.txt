@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/server.dir/src/server.c.o CMakeFiles/server.dir/src/auxfuncs.c.o  -o server -Wl,-rpath,/home/tiago/PARI/Projeto_77001/server/build: libmyutils.so 

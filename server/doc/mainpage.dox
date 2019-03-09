@@ -1,0 +1,14 @@
+/** @mainpage Projeto - "Servidor para simulação do RobCOMM" 
+ *
+ * @section intro_sec Descrição Geral
+ *
+ * Como nem sempre é possível ter o harware presente, desenvolveu-se, um servidor para simular a comunicação por TCP/IP do robô. Para executar o servidor, depois de compilado,
+ * basta colocar “server PortNumber” , onde PortNumber é o numero da porta usado. 
+ * @author  Tiago Tavares
+
+ * @section comunic_sec  Comunicação
+
+ O programa esta apto para responder a mensagens TCP/IP, de acordo com a linguagem RobCOMM, onde o ip configurado é o ip local, e a porta é um argumento de entrada.
+
+
+*/

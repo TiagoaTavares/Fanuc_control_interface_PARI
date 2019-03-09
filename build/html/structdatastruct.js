@@ -1,0 +1,28 @@
+var structdatastruct =
+[
+    [ "c1", "structdatastruct.html#a29f30414fe5c9a7469cb521ec3de1187", null ],
+    [ "c2", "structdatastruct.html#ae6a0500309758ac4aa4b46a0ef84a412", null ],
+    [ "c3", "structdatastruct.html#a523cab202f4f8b617646ffa2cf619ff7", null ],
+    [ "c4", "structdatastruct.html#a9b8946b2ae375eb0eff50bff03476d80", null ],
+    [ "c5", "structdatastruct.html#a71328b188e92e9535adb1dcda9ad0bae", null ],
+    [ "c6", "structdatastruct.html#aef7f5441b54ce43b5d9803d865a8d824", null ],
+    [ "connection", "structdatastruct.html#ac267df89634acd44d824c0388d7fc492", null ],
+    [ "frame", "structdatastruct.html#a727de9c19518957465ffa98afce29472", null ],
+    [ "gotostart", "structdatastruct.html#a8d4e5f3d38199f9a4216249fec3066a3", null ],
+    [ "gripper", "structdatastruct.html#a28f9705c94d25944ed97875b4efdb1f4", null ],
+    [ "incremento", "structdatastruct.html#aff8d97ece350214c6cecae7a8f63d722", null ],
+    [ "j1", "structdatastruct.html#a3e9736c5e130306389cb055cadc47f55", null ],
+    [ "j2", "structdatastruct.html#ad0c3100e75836ac2849e613db1d0a7f1", null ],
+    [ "j3", "structdatastruct.html#a6e07a77bf34173660b2c9e0c69e6d6f2", null ],
+    [ "j4", "structdatastruct.html#a188a41d229f6dda38a413b2cb6ebeac2", null ],
+    [ "j5", "structdatastruct.html#a9f67f17c48e207abf3b18530d20d070b", null ],
+    [ "j6", "structdatastruct.html#ab3292d356521da9728d5d920710c49fc", null ],
+    [ "mode", "structdatastruct.html#a42439235915d55f930e6554fd691fb94", null ],
+    [ "pedido", "structdatastruct.html#ab3ef7e6b0e2018f906af5a4da686a82d", null ],
+    [ "pedido_connection", "structdatastruct.html#ad81708776513d682bb5fce0d7f25d2cf", null ],
+    [ "pergunta", "structdatastruct.html#acefbe0823ba53a174dd25114f5d16f45", null ],
+    [ "resposta", "structdatastruct.html#adea58261508c2d1eb0c43fc124c9f1a5", null ],
+    [ "resposta_done", "structdatastruct.html#a75329a5aae372f46003615a79793dc92", null ],
+    [ "ty", "structdatastruct.html#aa0ea4f4151792a58b3099e70f47bb52a", null ],
+    [ "velocidade", "structdatastruct.html#a7f2bce277d524c9d31ae757531170099", null ]
+];

@@ -1,0 +1,64 @@
+/** @mainpage Projeto - "Controlo e interface de um manipulador robótico" 
+ *
+ * @section intro_sec Descrição Geral
+ *
+ * O presente trabalho insere-se na unidade curricular de ”Projeto em Automação e Robótica Industrial” e tem como principal objetivo a monitorização e o controlo de um 
+ * manipulador robótico, com recurso a uma interface gráfica construida em ambiente gtk. De modo a dar resposta aos objetivos propostos, desenvolveu-se um programa
+ * que  comunica por tcp/ip com o robô, e apresenta a informação na respetiva interface gráfica. Como nem sempre é possível ter este harware presente, desenvolveu-se,
+ * complementarmente , um servidor para simular a comunicação do robô. Para executar os programas, depois de compilados,  no servidor basta colocar “server PortNumber” , 
+ * e no cliente “Projeto PortNumber”, onde PortNumber é o numero da porta usado. Caso a comunicação seja feita com o manipulador referido, não é necessário colocar o numero da porta.
+ * O manipulador usado, encontra-se no laboratório de robótica (LAR), do departamento de Engenharia Mecânica.
+ * @author  Tiago Tavares 77001
+
+ * @section comunic_sec  Comunicação
+
+ A aplicação comunica com o sistema remoto (controlador do manipulador) através de TCP/IP,
+ onde o servidor, robCOMM, e cliente, terão que comunicar através da línguagem robCOMM prog. Este servidor está preparado para receber um certo tipo de mensagens, e agir de acordo 
+ com as mesmas. 
+
+* @section arquit_sec  Arquitetura
+A aplicação desenvolvida apresenta 2 processos (pai e filho) a correr em simultâneo de modo a que o pai realize apenas a comunicação e o filho o controlo da interface. De modo a individualizar tarefas, 
+criou-se uma “shared memory” para que ambos os processos acessem em simultâneo. Segue-se a representação esquemática da arquitetura presente no projeto:
+ <img src="../../doc/arquitetura.PNG" height="400" width="550" title="Esquema da arquitetura do programa">
+
+
+O processo que controla a interface espera novos eventos na janela, como, cliques em botões, seleção de opções ou escrita de texto em “entrys”. Sempre que ocorre um evento, este processo escreve na “shared memory” 
+o pedido, de modo a que o processo “pai” se encarregue de formatar a mensagem na linguagem adequada e troque a informação com o servidor. 
+Quando este obtém a resposta, informa novamente o “filho” de modo a apresentar a informação ao utilizador.  
+Quando não existe pedidos por parte do processo “filho”, o processo “pai” encarrega-se de estar constantemente a pedir informação ao robô das suas coordenadas atuais e atualiza-as constantemente na memoria 
+partilhada. Assim, o processo filho, contem um “timer” de atualização de informação, de modo a atualizar a interface com as posições do robô, bem como outras 
+variáveis (incrementos, estado do “gripper”, velocidade, entre outros). 
+De modo a ter uma melhor perceção da comunicação do processo “pai” (cliente), optou-se por fazer o “display” da informação trocada trocada cliente-servidor no terminal, como se pode ver na imagem seguinte:
+
+ <img src="../../doc/terminal.png" height="400" width="550" title="Esquema da arquitetura do programa">
+
+ Entre cada “====” a vermelho, é possível visualizar varias mensagens enviadas e a sua resposta . No primeiro caso vemos que existe uma ordem de movimento de juntas por parte do cliente, e a sua respetiva 
+ resposta, por parte do robô. As outras duas mensagens seguintes são exemplo da constante atualização das posições do robô, primeiramente a posição em juntas, e depois a posição em cartesianas.
+ Visto que a atualização das posições é dada em intervalos de tempo bastante curtos, existe a possibilidade de haver alguma confusão de informação, devido ao tempo de resposta por parte do “hardware” e 
+ devido à sua configuração. Um caso especifico deste problema é por exemplo, na movimentação do robô, em este manda ocasionalmente “Moving...” e que após o envio dos pedidos de atualização de posições, 
+ por vezes as mensagens são recebidas na mesma “string”. De modo a não comprometer a comunicação e as mensagens processadas, teve-se o especial cuidado de procurar nas “strings” recebidas, palavras chave de 
+ modo a localizar a informação necessária a cada situação.
+
+
+* @section Interface_sec  Interface gráfica
+
+Na interface gráfica podemos observar várias ferramentas ao dispor do utilizador. 
+Antes de efetuar qualquer pedido, o utilizador deve conectar-se ao servidor do robô. Caso se esqueça, e tente efetuar algum pedido, a aplicação relembrá-lo-a de o fazer no “label” correspondente. 
+De modo a saber se está ou não conectado, ao lado do botão de conexão, apresenta-se um “label” onde é possível visualizar o estado da ligação . 
+Após estabelecida a conexão, apresenta-se várias funções disponíveis para o utilizador interagir com o robô. No topo da aplicação, pode-se escrever uma mensagem na caixa de texto, enviar para o servidor, 
+e visualizar-se-á a resposta deste no “label” em baixo. Caso o utilizador não saiba nenhuma mensagem na linguagem “ robCOMM”, deve clicar no botão de informação (apresentado ao lado da entrada de texto) 
+que contem alguns exemplos e sugestões de como utilizar devidamente o programa. 
+O utilizador pode mover o robô, utilizando o movimento por juntas, ou por coordenadas cartesianas. Essa seleção, pode ser feita no botão de troca de “frame” podendo-se observar ao lado, 
+o sistema de coordenadas escolhido (“joint”/”world”). Esse movimento é incremental, sendo que esse valor também pode ser definido pelo o utilizador. Para a realização do movimento, deve-se também 
+selecionar  velocidade que se pretende, colocando o valor pretendido (de 0 a 100 %) na entrada de texto inferior esquerda.
+De modo a facilitar a visualização das posições das juntas, apresenta-se ao lado dos menus de incremento, barras que dão informação ao utilizador dos limites das juntas e da sua posição atual. 
+Para além desta visualização, no menu do lado direito, também é possível verificar a posição em juntas e a respetiva posição cartesiana em forma numérica .
+O utilizador, pode também selecionar um programa da consola na “combobox” apresentada e executa-lo no botão à direita. Caso este menu ainda não tenha sido atualizado ou não apresente algum programa 
+especifico, existe um botão do seu lado esquerdo destinado à atualização da lista de programas.
+Pode-se também, efetuar outras ações no menu do lado direito, como: abrir e fechar o “gripper”, movimentar o robô para a posição zero ou parar o movimento do robô.  
+De modo a dar uma melhor experiência ao utilizador, e caso o utilizador esteja à distancia, existe a opção de o utilizador visualizar o robô em tempo real, através de uma webcam. 
+Para lhe aceder basta carregar no botão “webcam” e será apresentada uma janela complementar para o efeito. Apresenta-se de seguida, uma imagem de ambas as janelas em funcionamento:
+
+ <img src="../../doc/interface.png" height="500" width="750" title="Interface grafica">
+
+*/

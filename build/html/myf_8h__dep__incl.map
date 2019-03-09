@@ -1,0 +1,5 @@
+<map id="src/myf.h" name="src/myf.h">
+<area shape="rect" id="node2" href="$callbacks_8c.html" title="Callbacks to GTK, and aux functions! " alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="Main file, wich makes the fork to obtain the 2 needed processes. (SON AND FATHER). " alt="" coords="141,80,223,107"/>
+<area shape="rect" id="node4" href="$myf_8c.html" title="file that has the 2 functions ( Father and Son functions), as well as other functions to complement i..." alt="" coords="247,80,325,107"/>
+</map>

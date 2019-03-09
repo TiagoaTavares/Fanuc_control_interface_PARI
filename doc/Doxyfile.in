@@ -1,0 +1,24 @@
+#Some Doxygen common/useful configurations
+#Items between @ @ are configured dynamically by cmake in CMakeLists.txt
+#
+PROJECT_NAME           = "@CMAKE_PROJECT_NAME@"
+PROJECT_NUMBER         = @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@
+STRIP_FROM_PATH        = "@PROJECT_SOURCE_DIR@" \
+                         "@PROJECT_BINARY_DIR@"
+INPUT                  = "@PROJECT_SOURCE_DIR@/doc/mainpage.dox"\ 
+			 "@PROJECT_SOURCE_DIR@"
+EXCLUDE                = "@PROJECT_BINARY_DIR@" 
+PROJECT_LOGO           = "@PROJECT_SOURCE_DIR@/doc/PARI_logo.ico"
+FILE_PATTERNS          = *.h  *.c
+#Use next lines instead if you need only to document the library
+#FILE_PATTERNS          = "@PROJECT_SOURCE_DIR@/srcmyutils/*.h" \
+#                         "@PROJECT_SOURCE_DIR@/srcmyutils/*.c"
+RECURSIVE              = YES
+#USE_MDFILE_AS_MAINPAGE = "@doxy_main_page@"
+
+GENERATE_LATEX         = NO
+HAVE_DOT               = YES
+SOURCE_BROWSER         = YES
+GENERATE_TREEVIEW      = ALL
+HTML_EXTRA_STYLESHEET  = "@PROJECT_SOURCE_DIR@/doc/doxygen_1.css" 
+#HTML_EXTRA_STYLESHEET  = "@PROJECT_SOURCE_DIR@/doc/doxygen_3.css" 
